@@ -15,6 +15,7 @@ class PlantaController extends Controller
     public function index()
     {
         //
+        return Planta::get();
     }
 
     /**
@@ -37,6 +38,7 @@ class PlantaController extends Controller
     public function show(Planta $planta)
     {
         //
+        return $planta;
     }
 
     /**
