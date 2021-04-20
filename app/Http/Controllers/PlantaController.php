@@ -27,6 +27,11 @@ class PlantaController extends Controller
     public function store(Request $request)
     {
         //
+        $planta = $request->all();
+        if($request->hasFile('pathImagen')){
+            $planta['pathImagen'] = $request->file('pathImage')->store('planta_img');
+        }
+        Planta::create($planta);
     }
 
     /**
