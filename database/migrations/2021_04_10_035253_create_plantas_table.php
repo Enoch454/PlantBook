@@ -17,11 +17,11 @@ class CreatePlantasTable extends Migration
             $table->id();
             $table->timestamps();
             //----
-            $table->string('nombre');
-            $table->string('nCientifico');
-            $table->string('nAlterno');
+            $table->string('nombre',100);
+            $table->string('nCientifico',100);
+            $table->string('nAlterno',100);
             $table->text('info');
-            $table->string('pathImagen');
+            $table->string('pathImagen',100);
             
         });
     }
