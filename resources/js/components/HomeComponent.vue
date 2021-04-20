@@ -22,14 +22,14 @@
             async listar() {
                 const res = await axios.get('/plantas');
                 this.lista_plantas = res.data;
+                console.log(this.lista_plantas)
             },
         },
         created() {
-            this.listar();
         },
         mounted() {
             //console.log('Component mounted.')
-            console.log(this.lista_plantas)
+            this.listar();
         },
     }
 </script>

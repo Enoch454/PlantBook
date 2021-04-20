@@ -1899,8 +1899,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 res = _context.sent;
                 _this.lista_plantas = res.data;
+                console.log(_this.lista_plantas);
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -1909,12 +1910,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     }
   },
-  created: function created() {
-    this.listar();
-  },
+  created: function created() {},
   mounted: function mounted() {
     //console.log('Component mounted.')
-    console.log(this.lista_plantas);
+    this.listar();
   }
 });
 
