@@ -56,6 +56,7 @@ class PlantaController extends Controller
     public function update(Request $request, Planta $planta)
     {
         //
+        $planta->update($request->all());
     }
 
     /**
@@ -67,5 +68,6 @@ class PlantaController extends Controller
     public function destroy(Planta $planta)
     {
         //
+        $planta->destroy();
     }
 }
