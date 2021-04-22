@@ -1867,6 +1867,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     nombre: String,
@@ -1874,6 +1875,11 @@ __webpack_require__.r(__webpack_exports__);
     nAlterno: String,
     info: String,
     pathImagen: String
+  },
+  data: function data() {
+    return {
+      imagen: "http://localhost/storage/" + this.pathImagen
+    };
   }
 });
 
@@ -1898,9 +1904,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
 //
 //
 //
@@ -38343,9 +38346,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", [_vm._v("Ficha Ejemplo")]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.nombre))]),
+    _c("h3", [_vm._v(_vm._s(_vm.nombre))]),
     _vm._v(" "),
     _c("p", [_vm._v(_vm._s(_vm.nCientifico))]),
     _vm._v(" "),
@@ -38353,7 +38354,11 @@ var render = function() {
     _vm._v(" "),
     _c("p", [_vm._v(_vm._s(_vm.info))]),
     _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.pathImagen))])
+    _c("p", [_vm._v(_vm._s(_vm.pathImagen))]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.imagen))]),
+    _vm._v(" "),
+    _c("img", { attrs: { src: _vm.imagen, alt: "una flor" } })
   ])
 }
 var staticRenderFns = []
@@ -38381,21 +38386,17 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-md-10" }, [
     _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header" }, [
-        _vm._v("\n            Example Component\n        ")
-      ]),
-      _vm._v(" "),
       _c(
         "div",
         { staticClass: "card-body" },
         [
           _c("ficha-component", {
             attrs: {
-              nombre: _vm.lista_plantas[0].name,
-              nCientifico: _vm.lista_plantas[0].nCientifico,
-              nAlterno: _vm.lista_plantas[0].nAlterno,
-              info: _vm.lista_plantas[0].info,
-              pathImagen: _vm.lista_plantas[0].pathImagen
+              nombre: this.lista_plantas[0].nombre,
+              nCientifico: this.lista_plantas[0].nCientifico,
+              nAlterno: this.lista_plantas[0].nAlterno,
+              info: this.lista_plantas[0].info,
+              pathImagen: this.lista_plantas[0].pathImagen
             }
           })
         ],

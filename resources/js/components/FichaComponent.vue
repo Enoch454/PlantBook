@@ -1,11 +1,12 @@
 <template>
     <div>
-        <h3>Ficha Ejemplo</h3>
-        <p>{{nombre}}</p>
+        <h3>{{nombre}}</h3>
         <p>{{nCientifico}}</p>
         <p>{{nAlterno}}</p>
         <p>{{info}}</p>
         <p>{{pathImagen}}</p>
+        <p>{{imagen}}</p>
+        <img v-bind:src="imagen" alt="una flor">
     </div>
 </template>
 
@@ -18,6 +19,11 @@
             info:String,
             pathImagen:String,
         },
+        data(){
+            return {
+                imagen: "http://localhost/storage/"+this.pathImagen,
+            }
+        }
     }
 </script>
 
