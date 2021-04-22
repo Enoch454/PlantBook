@@ -1,11 +1,17 @@
 <template>
-    <div class="col-md-8">
+    <div class="col-md-10">
         <div class="card">
             <div class="card-header">
                 Example Component
             </div>
             <div class="card-body">
-                I'm an example component.
+                <ficha-component
+                    v-bind:nombre="lista_plantas[0].name"
+                    v-bind:nCientifico="lista_plantas[0].nCientifico"
+                    v-bind:nAlterno="lista_plantas[0].nAlterno"
+                    v-bind:info="lista_plantas[0].info"
+                    v-bind:pathImagen="lista_plantas[0].pathImagen"
+                ></ficha-component>
             </div>
         </div>
     </div>
@@ -26,10 +32,11 @@
             },
         },
         created() {
-        },
-        mounted() {
             //console.log('Component mounted.')
             this.listar();
+        },
+        mounted() {
+            
         },
     }
 </script>
