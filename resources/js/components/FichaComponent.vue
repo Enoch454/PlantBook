@@ -6,7 +6,7 @@
         <p>{{info}}</p>
         <p>{{pathImagen}}</p>
         <p>{{imagen}}</p>
-        <img v-bind:src="imagen" alt="una flor">
+        <img v-bind:src="imagen" v-bind:alt="nombre">
     </div>
 </template>
 
