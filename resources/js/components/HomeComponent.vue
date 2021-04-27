@@ -2,8 +2,8 @@
     <div class="">
 
         <!-- Modal -->
-        <div class="modal" :class="{mostrar : modalActivo}">
-            <div class="modal-dialog">
+        <div class="modal" :class="{mostrar : modalActivo}" style="overflow-y: scroll">
+            <div class="modal-dialog" style="width:1250px;">
                 <div class="modal-content">
                     <div class="modal-header">
                         <div>
@@ -15,6 +15,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <!--
                         <div>
                             <div class="ripple">
                                 <img
@@ -30,6 +31,24 @@
                         <div>
                             <p>Tambien conocido como</p>
                             <p>{{planta_seleccionada.nAlterno}}</p>
+                        </div>
+                        -->
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img
+                                        alt="una flor"
+                                        class="img-fluid rounded"
+                                        v-bind:src="get_pathImagen(planta_seleccionada.plantaImagen)"
+                                    />
+                                </div>
+                                <div class="col-md-8">
+                                    <p>{{planta_seleccionada.info}}</p>
+                                    <p>Tambien conocido como</p>
+                                    <p>{{planta_seleccionada.nAlterno}}</p>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -53,6 +72,9 @@
                 </div>
             </div>
         </div>
+
+
+
     </div>
 </template>
 
@@ -109,8 +131,34 @@
 
 <style>
     .mostrar{
-            display: list-item;
-            opacity: 1;
-            background: rgba(43, 43, 43, 0.705);
-        }
+        display: list-item;
+        opacity: 1;
+        background: rgba(43, 43, 43, 0.705);
+    }
+    
+   
+    /*
+    Full screen Modal 
+    */
+    .fullscreen-modal .modal-dialog {
+    margin: 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    }
+    @media (min-width: 768px) {
+    .fullscreen-modal .modal-dialog {
+        width: 750px;
+    }
+    }
+    @media (min-width: 992px) {
+    .fullscreen-modal .modal-dialog {
+        width: 970px;
+    }
+    }
+    @media (min-width: 1200px) {
+    .fullscreen-modal .modal-dialog {
+        width: 1170px;
+    }
+    }
 </style>
