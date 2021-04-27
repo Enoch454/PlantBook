@@ -3,7 +3,7 @@
 
         <!-- Modal -->
         <div class="modal" :class="{mostrar : modalActivo}" style="overflow-y: scroll">
-            <div class="modal-dialog" style="width:1250px;">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <div>
@@ -15,25 +15,6 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!--
-                        <div>
-                            <div class="ripple">
-                                <img
-                                    alt="una flor"
-                                    class="img-fluid rounded"
-                                    v-bind:src="get_pathImagen(planta_seleccionada.plantaImagen)"
-                                />
-                            </div>
-                        </div>
-                        <div>
-                            <p>{{planta_seleccionada.info}}</p>
-                        </div>
-                        <div>
-                            <p>Tambien conocido como</p>
-                            <p>{{planta_seleccionada.nAlterno}}</p>
-                        </div>
-                        -->
-
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-4">
@@ -58,7 +39,7 @@
 
 
 
-
+<!--
         <div class="card">
             <div class="card-body">
                 <div v-for="planta in lista_plantas" :key="planta.id">
@@ -72,6 +53,25 @@
                 </div>
             </div>
         </div>
+-->
+
+        <div class="container">
+            <div class="row">
+                <div v-for="planta in lista_plantas" :key="planta.id" class="col-lg-3 col-md-4 col-xs-6 thumb">
+                    <div @click="seleccionar(planta)" class="fancybox" rel="ligthbox">
+                        <img
+                            v-bind:src="get_pathImagen(planta.pathImagen)"
+                            class="zoom img-fluid " 
+                            alt="una flor"
+                        >
+                    </div>    
+                </div>
+            </div>
+        </div>
+
+
+
+
 
 
 
@@ -137,28 +137,59 @@
     }
     
    
-    /*
-    Full screen Modal 
-    */
-    .fullscreen-modal .modal-dialog {
-    margin: 0;
-    margin-right: auto;
-    margin-left: auto;
-    width: 100%;
+   /*body {
+    background-color:#1d1d1d !important;
+    font-family: "Asap", sans-serif;
+    color:#989898;
+    margin:10px;
+    font-size:16px;
+    }*/
+
+    #demo {
+        height:100%;
+        position:relative;
+        overflow:hidden;
     }
-    @media (min-width: 768px) {
-    .fullscreen-modal .modal-dialog {
-        width: 750px;
+
+    .green{
+        background-color:#6fb936;
     }
+    
+    .thumb{
+        margin-bottom: 30px;
     }
-    @media (min-width: 992px) {
-    .fullscreen-modal .modal-dialog {
-        width: 970px;
+    
+    .page-top{
+        margin-top:85px;
     }
+
+    img.zoom {
+        width: 100%;
+        height: 200px;
+        border-radius:5px;
+        object-fit:cover;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        -ms-transition: all .3s ease-in-out;
     }
-    @media (min-width: 1200px) {
-    .fullscreen-modal .modal-dialog {
-        width: 1170px;
+            
+    
+    .transition {
+        -webkit-transform: scale(1.2); 
+        -moz-transform: scale(1.2);
+        -o-transform: scale(1.2);
+        transform: scale(1.2);
     }
+        .modal-header {
+    
+        border-bottom: none;
     }
+    .modal-title {
+        color:#000;
+    }
+    .modal-footer{
+    display:none;  
+    }
+
 </style>
