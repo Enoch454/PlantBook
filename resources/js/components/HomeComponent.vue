@@ -47,11 +47,10 @@
 
         <div class="container">
             <div class="row">
-                <div v-for="planta in lista_plantas"
+                <div v-for="planta in this.filtrar_lista(lista_plantas)"
                     :key="planta.id" 
                     class="col-lg-3 col-md-4 col-xs-6 thumb">
                     <div
-                        v-if="busqueda(planta)"
                         @click="seleccionar(planta)"
                         class="fancybox"
                         rel="ligthbox">
@@ -128,7 +127,15 @@
                     var full_text = this.get_full_text(planta);
                     return(full_text.toLocaleLowerCase().includes(this.term_busqueda.toLocaleLowerCase()))
                 }
-
+            },
+            filtrar_lista(){
+                var lista = [];
+                for (var i = 0; i<this.lista_plantas.length; i++){
+                    if(this.busqueda(this.lista_plantas[i])){
+                        lista.push(this.lista_plantas[i]);
+                    }
+                }
+                return lista;
             }
 
         },

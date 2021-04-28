@@ -1939,7 +1939,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2009,6 +2008,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         var full_text = this.get_full_text(planta);
         return full_text.toLocaleLowerCase().includes(this.term_busqueda.toLocaleLowerCase());
       }
+    },
+    filtrar_lista: function filtrar_lista() {
+      var lista = [];
+
+      for (var i = 0; i < this.lista_plantas.length; i++) {
+        if (this.busqueda(this.lista_plantas[i])) {
+          lista.push(this.lista_plantas[i]);
+        }
+      }
+
+      return lista;
     }
   },
   created: function created() {
@@ -38559,34 +38569,32 @@ var render = function() {
       _c(
         "div",
         { staticClass: "row" },
-        _vm._l(_vm.lista_plantas, function(planta) {
+        _vm._l(this.filtrar_lista(_vm.lista_plantas), function(planta) {
           return _c(
             "div",
             { key: planta.id, staticClass: "col-lg-3 col-md-4 col-xs-6 thumb" },
             [
-              _vm.busqueda(planta)
-                ? _c(
-                    "div",
-                    {
-                      staticClass: "fancybox",
-                      attrs: { rel: "ligthbox" },
-                      on: {
-                        click: function($event) {
-                          return _vm.seleccionar(planta)
-                        }
-                      }
-                    },
-                    [
-                      _c("img", {
-                        staticClass: "zoom img-fluid ",
-                        attrs: {
-                          src: _vm.get_pathImagen(planta.pathImagen),
-                          alt: "una flor"
-                        }
-                      })
-                    ]
-                  )
-                : _vm._e()
+              _c(
+                "div",
+                {
+                  staticClass: "fancybox",
+                  attrs: { rel: "ligthbox" },
+                  on: {
+                    click: function($event) {
+                      return _vm.seleccionar(planta)
+                    }
+                  }
+                },
+                [
+                  _c("img", {
+                    staticClass: "zoom img-fluid ",
+                    attrs: {
+                      src: _vm.get_pathImagen(planta.pathImagen),
+                      alt: "una flor"
+                    }
+                  })
+                ]
+              )
             ]
           )
         }),
