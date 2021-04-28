@@ -1938,7 +1938,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1970,9 +1969,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 res = _context.sent;
                 _this.lista_plantas = res.data;
-                console.log(_this.lista_plantas);
 
-              case 5:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -1981,7 +1979,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     get_pathImagen: function get_pathImagen(path_imagen) {
-      var path = "http://localhost/storage/" + path_imagen;
+      var path = "http://" + window.location.host + "/storage/" + path_imagen;
       console.log(path);
       return path;
     },
@@ -1998,7 +1996,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.modalActivo = false;
     },
     get_full_text: function get_full_text(planta) {
-      var full_text = planta.info + " " + planta.nombre + " " + planta.nCientifico + " " + planta.nAlterno + " ";
+      var full_text =
+      /*planta.info + */
+      " " + planta.nombre + " " + planta.nCientifico + " " + planta.nAlterno + " ";
       return full_text;
     },
     busqueda: function busqueda(planta) {
@@ -2025,9 +2025,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     //console.log('Component mounted.')
     this.listar();
   },
-  mounted: function mounted() {
-    console.log(this.lista_plantas);
-  }
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -38560,9 +38558,7 @@ var render = function() {
             }
           }
         })
-      ]),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.term_busqueda))])
+      ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [

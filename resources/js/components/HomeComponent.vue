@@ -42,7 +42,6 @@
             <form action="">
                 <input v-model="term_busqueda" type="text" class="barra-busqueda" id="barra-busqueda" placeholder="Buscar">
             </form>
-            <p>{{term_busqueda}}</p>
         </header>
 
         <div class="container">
@@ -93,10 +92,10 @@
             async listar() {
                 const res = await axios.get('/plantas');
                 this.lista_plantas = res.data;
-                console.log(this.lista_plantas);
+                
             },
             get_pathImagen(path_imagen){
-                var path = "http://localhost/storage/"+path_imagen;
+                var path = "http://"+window.location.host+"/storage/"+path_imagen;
                 console.log(path)
                 return path;
             },
@@ -114,7 +113,7 @@
                 this.modalActivo=false;
             },
             get_full_text(planta){
-                var full_text = planta.info + " "
+                var full_text = /*planta.info + */" "
                     + planta.nombre + " "
                     + planta.nCientifico + " "
                     + planta.nAlterno + " ";
@@ -144,7 +143,7 @@
             this.listar();
         },
         mounted() {
-            console.log(this.lista_plantas)
+            
         },
     }
 </script>
