@@ -37,23 +37,13 @@
             </div>
         </div>
 
-
-
-<!--
-        <div class="card">
-            <div class="card-body">
-                <div v-for="planta in lista_plantas" :key="planta.id">
-                    <button class="ripple" @click="seleccionar(planta)">
-                        <img
-                            alt="una flor"
-                            class="img-fluid rounded"
-                            v-bind:src="get_pathImagen(planta.pathImagen)"
-                        />
-                    </button>
-                </div>
-            </div>
-        </div>
--->
+        <!--Form barra de busqueda-->
+        <header>
+            <form action="">
+                <input v-model="term_busqueda" type="text" class="barra-busqueda" id="barra-busqueda" placeholder="Buscar">
+            </form>
+            <p>{{term_busqueda}}</p>
+        </header>
 
         <div class="container">
             <div class="row">
@@ -91,7 +81,7 @@
                     pathImagen:"",
                 },
                 modalActivo: false,
-
+                term_busqueda: "",
             }
         },
         methods: {
@@ -190,6 +180,26 @@
     }
     .modal-footer{
     display:none;  
+    }
+
+/* Form barra de busqueda */
+    header form{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    header .barra-busqueda{
+        width: 70%;
+        height: 40px;
+        line-height: 40px;
+        background: #ffffff;
+        padding: 0 20px;
+        border-radius: 100px;
+        border: none;
+        text-align: center;
+        font-size: 16px;
     }
 
 </style>

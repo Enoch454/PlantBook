@@ -1922,6 +1922,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1933,7 +1945,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         nombre: "",
         pathImagen: ""
       },
-      modalActivo: false
+      modalActivo: false,
+      term_busqueda: ""
     };
   },
   methods: {
@@ -6531,7 +6544,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.mostrar{\n        display: list-item;\n        opacity: 1;\n        background: rgba(43, 43, 43, 0.705);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.mostrar{\n        display: list-item;\n        opacity: 1;\n        background: rgba(43, 43, 43, 0.705);\n}\n    \n   \n   /*body {\n    background-color:#1d1d1d !important;\n    font-family: \"Asap\", sans-serif;\n    color:#989898;\n    margin:10px;\n    font-size:16px;\n    }*/\n#demo {\n        height:100%;\n        position:relative;\n        overflow:hidden;\n}\n.green{\n        background-color:#6fb936;\n}\n.thumb{\n        margin-bottom: 30px;\n}\n.page-top{\n        margin-top:85px;\n}\nimg.zoom {\n        width: 100%;\n        height: 200px;\n        border-radius:5px;\n        -o-object-fit:cover;\n           object-fit:cover;\n        -webkit-transition: all .3s ease-in-out;\n        -moz-transition: all .3s ease-in-out;\n        -o-transition: all .3s ease-in-out;\n        -ms-transition: all .3s ease-in-out;\n}\n.transition {\n        transform: scale(1.2);\n}\n.modal-header {\n    \n        border-bottom: none;\n}\n.modal-title {\n        color:#000;\n}\n.modal-footer{\n    display:none;\n}\n\n/* Form barra de busqueda */\nheader form{\n        width: 100%;\n        display: flex;\n        justify-content: center;\n        margin-bottom: 20px;\n}\nheader .barra-busqueda{\n        width: 70%;\n        height: 40px;\n        line-height: 40px;\n        background: #ffffff;\n        padding: 0 20px;\n        border-radius: 100px;\n        border: none;\n        text-align: center;\n        font-size: 16px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38422,95 +38435,140 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", {}, [
-    _c("div", { staticClass: "modal", class: { mostrar: _vm.modalActivo } }, [
-      _c("div", { staticClass: "modal-dialog" }, [
-        _c("div", { staticClass: "modal-content" }, [
-          _c("div", { staticClass: "modal-header" }, [
-            _c("div", [
-              _c("h4", { staticClass: "modal-title" }, [
-                _vm._v(_vm._s(_vm.planta_seleccionada.nombre))
+    _c(
+      "div",
+      {
+        staticClass: "modal",
+        class: { mostrar: _vm.modalActivo },
+        staticStyle: { "overflow-y": "scroll" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c("div", [
+                _c("h4", { staticClass: "modal-title" }, [
+                  _vm._v(_vm._s(_vm.planta_seleccionada.nombre))
+                ]),
+                _vm._v(" "),
+                _c("h6", { staticClass: "modal-title" }, [
+                  _vm._v(_vm._s(_vm.planta_seleccionada.nCientifico))
+                ])
               ]),
               _vm._v(" "),
-              _c("h6", { staticClass: "modal-title" }, [
-                _vm._v(_vm._s(_vm.planta_seleccionada.nCientifico))
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "close",
-                attrs: {
-                  type: "button",
-                  "data-dismiss": "modal",
-                  "aria-label": "Close"
-                },
-                on: {
-                  click: function($event) {
-                    return _vm.cerrarModal()
-                  }
-                }
-              },
-              [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-body" }, [
-            _c("div", [
-              _c("div", { staticClass: "ripple" }, [
-                _c("img", {
-                  staticClass: "img-fluid rounded",
+              _c(
+                "button",
+                {
+                  staticClass: "close",
                   attrs: {
-                    alt: "una flor",
-                    src: _vm.get_pathImagen(
-                      _vm.planta_seleccionada.plantaImagen
-                    )
+                    type: "button",
+                    "data-dismiss": "modal",
+                    "aria-label": "Close"
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.cerrarModal()
+                    }
                   }
-                })
+                },
+                [
+                  _c("span", { attrs: { "aria-hidden": "true" } }, [
+                    _vm._v("×")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "container-fluid" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _c("img", {
+                      staticClass: "img-fluid rounded",
+                      attrs: {
+                        alt: "una flor",
+                        src: _vm.get_pathImagen(
+                          _vm.planta_seleccionada.plantaImagen
+                        )
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-8" }, [
+                    _c("p", [_vm._v(_vm._s(_vm.planta_seleccionada.info))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Tambien conocido como")]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(_vm._s(_vm.planta_seleccionada.nAlterno))])
+                  ])
+                ])
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("p", [_vm._v(_vm._s(_vm.planta_seleccionada.info))])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("p", [_vm._v("Tambien conocido como")]),
-              _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.planta_seleccionada.nAlterno))])
             ])
           ])
         ])
-      ])
+      ]
+    ),
+    _vm._v(" "),
+    _c("header", [
+      _c("form", { attrs: { action: "" } }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.term_busqueda,
+              expression: "term_busqueda"
+            }
+          ],
+          staticClass: "barra-busqueda",
+          attrs: { type: "text", id: "barra-busqueda", placeholder: "Buscar" },
+          domProps: { value: _vm.term_busqueda },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.term_busqueda = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm.term_busqueda))])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "container" }, [
       _c(
         "div",
-        { staticClass: "card-body" },
+        { staticClass: "row" },
         _vm._l(_vm.lista_plantas, function(planta) {
-          return _c("div", { key: planta.id }, [
-            _c(
-              "button",
-              {
-                staticClass: "ripple",
-                on: {
-                  click: function($event) {
-                    return _vm.seleccionar(planta)
+          return _c(
+            "div",
+            { key: planta.id, staticClass: "col-lg-3 col-md-4 col-xs-6 thumb" },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "fancybox",
+                  attrs: { rel: "ligthbox" },
+                  on: {
+                    click: function($event) {
+                      return _vm.seleccionar(planta)
+                    }
                   }
-                }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid rounded",
-                  attrs: {
-                    alt: "una flor",
-                    src: _vm.get_pathImagen(planta.pathImagen)
-                  }
-                })
-              ]
-            )
-          ])
+                },
+                [
+                  _c("img", {
+                    staticClass: "zoom img-fluid ",
+                    attrs: {
+                      src: _vm.get_pathImagen(planta.pathImagen),
+                      alt: "una flor"
+                    }
+                  })
+                ]
+              )
+            ]
+          )
         }),
         0
       )
