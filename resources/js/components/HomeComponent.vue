@@ -47,8 +47,14 @@
 
         <div class="container">
             <div class="row">
-                <div v-for="planta in lista_plantas" :key="planta.id" class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <div @click="seleccionar(planta)" class="fancybox" rel="ligthbox">
+                <div v-for="planta in lista_plantas"
+                    :key="planta.id" 
+                    class="col-lg-3 col-md-4 col-xs-6 thumb">
+                    <div
+                        v-if="busqueda(planta)"
+                        @click="seleccionar(planta)"
+                        class="fancybox"
+                        rel="ligthbox">
                         <img
                             v-bind:src="get_pathImagen(planta.pathImagen)"
                             class="zoom img-fluid " 
@@ -108,6 +114,23 @@
             cerrarModal(){
                 this.modalActivo=false;
             },
+            get_full_text(planta){
+                var full_text = planta.info + " "
+                    + planta.nombre + " "
+                    + planta.nCientifico + " "
+                    + planta.nAlterno + " ";
+                return full_text;
+            },
+            busqueda(planta){
+                if(this.term_busqueda == ''){
+                    return true;
+                }else{
+                    var full_text = this.get_full_text(planta);
+                    return(full_text.toLocaleLowerCase().includes(this.term_busqueda.toLocaleLowerCase()))
+                }
+
+            }
+
         },
         created() {
             //console.log('Component mounted.')

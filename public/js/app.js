@@ -1934,6 +1934,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1991,6 +1997,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     cerrarModal: function cerrarModal() {
       this.modalActivo = false;
+    },
+    get_full_text: function get_full_text(planta) {
+      var full_text = planta.info + " " + planta.nombre + " " + planta.nCientifico + " " + planta.nAlterno + " ";
+      return full_text;
+    },
+    busqueda: function busqueda(planta) {
+      if (this.term_busqueda == '') {
+        return true;
+      } else {
+        var full_text = this.get_full_text(planta);
+        return full_text.toLocaleLowerCase().includes(this.term_busqueda.toLocaleLowerCase());
+      }
     }
   },
   created: function created() {
@@ -38546,27 +38564,29 @@ var render = function() {
             "div",
             { key: planta.id, staticClass: "col-lg-3 col-md-4 col-xs-6 thumb" },
             [
-              _c(
-                "div",
-                {
-                  staticClass: "fancybox",
-                  attrs: { rel: "ligthbox" },
-                  on: {
-                    click: function($event) {
-                      return _vm.seleccionar(planta)
-                    }
-                  }
-                },
-                [
-                  _c("img", {
-                    staticClass: "zoom img-fluid ",
-                    attrs: {
-                      src: _vm.get_pathImagen(planta.pathImagen),
-                      alt: "una flor"
-                    }
-                  })
-                ]
-              )
+              _vm.busqueda(planta)
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "fancybox",
+                      attrs: { rel: "ligthbox" },
+                      on: {
+                        click: function($event) {
+                          return _vm.seleccionar(planta)
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "zoom img-fluid ",
+                        attrs: {
+                          src: _vm.get_pathImagen(planta.pathImagen),
+                          alt: "una flor"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e()
             ]
           )
         }),
